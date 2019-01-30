@@ -9,9 +9,17 @@ const port = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 
+// Import URI Mlab
+
+const DB = require("./config/keys");
+console.log(DB.mongoURI)
+
+// URI to connect to local DB
+// 'mongodb://localhost:27017/cocktail-app-MVC'
+
 mongoose
   .connect(
-    `mongodb://localhost:27017/cocktail-app-MVC`,
+    DB.mongoURI,
     { useNewUrlParser: true }
   )
   .then(console.log("Successful connection to database"))
