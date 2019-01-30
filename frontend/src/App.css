@@ -1,32 +1,71 @@
 body{
-  margin: 0;
-  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #A13D63;
+  color: white;
+  font-family: Montserrat, serif;
 }
 
-div .container{
-  margin: 0 auto;
+div .App {
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
-div .liqueur {
-  margin: 0 auto;
-  width: 600px;
-  height: 270px;
-  border-bottom: black solid 3px;
+h1 {
+  padding: 20px 340px;
+  background: #2D3142;
+  margin: 0 auto 15px;
 }
-div .soft {
-  margin: 0 auto;
-  width: 600px;
-  height: 270px;
-  border-bottom: black solid 3px;
+.container{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.liqueur {
+  width: 100%;
+  margin-bottom: 5px;
+  border: #2D3142 solid 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.soft {
+  width: 100%;
+  margin-bottom: 5px;
+  border: #2D3142 solid 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-div .additional{
-  margin: 0 auto;
-  width: 600px;
-  height: 270px;
+.additional {
+  width: 100%;
+  margin-bottom: 5px;
+  border: #2D3142 solid 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
+
 
 button {
-  padding: 20px;
   margin: 5px;
+  box-sizing: border-box;
+  color: aliceblue;
+  padding: 20px;
+  height: 80px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #2D3142;
+  cursor: pointer;
+}
+button:hover{
+  background: goldenrod;
+  color: #2D3142;
 }

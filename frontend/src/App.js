@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <h1>Cocktail App</h1>
+        <h1>Cocktail</h1>
         <div className="container">
           <div className="liqueur">
             <button>Vodka</button>
