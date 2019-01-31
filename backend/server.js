@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const morgan = require('morgan')
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -8,6 +9,8 @@ const port = process.env.PORT || 3001;
 // body parser middleware
 
 app.use(bodyParser.json());
+app.use(morgan('dev'));
+
 
 // Import URI Mlab
 
@@ -31,6 +34,6 @@ mongoose
 
 const routes = require("./routes/api/index");
 //Use Routes
-app.use("/api/", routes);
+app.use("/", routes);
 
 app.listen(port, () => console.log(`server started on port ${port}`));
