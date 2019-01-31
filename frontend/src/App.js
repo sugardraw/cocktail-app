@@ -1,9 +1,37 @@
 import React, { Component } from "react";
 import "./App.css";
+import axios from "axios";
+import CocktailList from "./CocktailList";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      matches: [],
+      isActive: false
+    };
+  }
   clickHandler = e => {
-    console.log(e.target);
+    e.target.classList.toggle("active");
+    axios
+      .get(
+        `http://localhost:3001/api/cocktails/get-matches/?name=${
+          e.target.textContent
+        }`
+      )
+      .then(data => {
+        console.log(data.data);
+        const reducedArray = this.state.matches.reduce(
+          (x, y) => (x.includes(y) ? x : [...x, y]),
+          []
+        );
+
+        this.setState({
+          matches: [data.data, ...reducedArray]
+        });
+      })
+      .then(console.log("matches", this.state.matches))
+      .catch(error => console.log(error));
   };
 
   render() {
@@ -31,19 +59,24 @@ class App extends Component {
             <button onClick={this.clickHandler}>Orange Liqueur</button>
           </div>
           <div className="soft">
-            <button>Cola</button>
-            <button>Orange Juice</button>
-            <button>Maraschino Cherries</button>
-            <button>Pineapple Juice</button>
-            <button>Frozen Limeade Concentrate</button>
-            <button>Lime</button>
-            <button>Club Soda</button>
-            <button>Cranberry Juice</button>
+            <button onClick={this.clickHandler}>Cola</button>
+            <button onClick={this.clickHandler}>Orange Juice</button>
+            <button onClick={this.clickHandler}>Maraschino Cherries</button>
+            <button onClick={this.clickHandler}>Pineapple Juice</button>
+            <button onClick={this.clickHandler}>
+              Frozen Limeade Concentrate
+            </button>
+            <button onClick={this.clickHandler}>Lime</button>
+            <button onClick={this.clickHandler}>Club Soda</button>
+            <button onClick={this.clickHandler}>Cranberry Juice</button>
           </div>
           <div className="additional">
-            <button>Sugar</button>
-            <button>Mint Leaves</button>
-            <button>Orgeat Syrup</button>
+            <button onClick={this.clickHandler}>Sugar</button>
+            <button onClick={this.clickHandler}>Mint Leaves</button>
+            <button onClick={this.clickHandler}>Orgeat Syrup</button>
+          </div>
+          <div className="cocktails">
+            <CocktailList matches={this.state.matches} />
           </div>
         </div>
       </div>

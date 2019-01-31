@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const morgan = require('morgan')
+const morgan = require('morgan');
+var cors = require('cors');
+
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -10,6 +12,7 @@ const port = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(cors())
 
 
 // Import URI Mlab

@@ -3,10 +3,7 @@ const Cocktail = require("../models/Cocktail");
 
 const cocktailController = {};
 
-
-
 //List all cocktails in DB
-
 
 cocktailController.listAll = (req, res) => {
   Cocktail.find({}).exec((errors, cocktail) => {
@@ -18,23 +15,24 @@ cocktailController.listAll = (req, res) => {
   });
 };
 
-
 /**
- * testing function //////////
+ * search matches functions //////////
  */
 
-cocktailController.testing = (req, res) => {
-  Cocktail.find({ "ingredients.name": {$regex:/^white/i}}).exec((errors, cocktail) => {
+
+
+cocktailController.listAllMatches = (req, res) => {
+  console.log(req.query.name);
+  Cocktail.find({
+    "ingredients.name": { $regex: req.query.name, $options: "i" }
+  }).exec((errors, cocktail) => {
     if (errors) {
       console.log("error:", error);
     } else {
-      res.json(cocktail);
-
+      console.log(cocktail)
+      res.send(cocktail);
     }
   });
 };
-
-
-
 
 module.exports = cocktailController;

@@ -1,9 +1,9 @@
-body{
+body {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #A13D63;
+  background: #a13d63;
   color: white;
   font-family: Montserrat, serif;
 }
@@ -18,18 +18,17 @@ div .App {
 
 h1 {
   padding: 20px 340px;
-  background: #2D3142;
+  background: #2d3142;
   margin: 0 auto 15px;
 }
-.container{
+.container {
   display: flex;
   flex-wrap: wrap;
-
 }
 .liqueur {
   width: 100%;
   margin-bottom: 5px;
-  border: #2D3142 solid 3px;
+  border: #2d3142 solid 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +36,7 @@ h1 {
 .soft {
   width: 100%;
   margin-bottom: 5px;
-  border: #2D3142 solid 3px;
+  border: #2d3142 solid 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,13 +45,11 @@ h1 {
 .additional {
   width: 100%;
   margin-bottom: 5px;
-  border: #2D3142 solid 3px;
+  border: #2d3142 solid 3px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
-
 
 button {
   margin: 5px;
@@ -62,10 +59,14 @@ button {
   height: 80px;
   font-size: 12px;
   font-weight: bold;
-  background: #2D3142;
+  background: #2d3142;
   cursor: pointer;
 }
-button:hover{
+button:hover {
   background: goldenrod;
-  color: #2D3142;
+  color: #2d3142;
+}
+.active {
+  background: goldenrod;
+  color: #2d3142;
 }

@@ -11,7 +11,7 @@ const cocktailSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  ingredients: [{ type: String }],
+  ingredients: [{ name: String }],
   rating: {
     type: Number
   },

@@ -18,6 +18,7 @@ router.get("/api", (req, res) => {
 
 //get all restaurants
 router.get("/api/cocktails/list", cocktailController.listAll);
+
 router.get("/api/recipes/list", recipeController.listAll);
 
 
@@ -25,6 +26,6 @@ router.get("/api/recipes/list", recipeController.listAll);
  * testing query
  * 
  */
-router.get("/api/cocktails/testing", cocktailController.testing);
+router.get("/api/cocktails/get-matches", cocktailController.listAllMatches);
 
 module.exports = router;
