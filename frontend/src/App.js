@@ -1,29 +1,34 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+  clickHandler = e => {
+    console.log(e.target);
+  };
+
   render() {
     return (
       <div className="App">
-
         <h1>Cocktail</h1>
         <div className="container">
           <div className="liqueur">
-            <button>Vodka</button>
-            <button>Apple Schnapps</button>
-            <button>Lime Juice </button>
-            <button>Gin</button>
-            <button>White Rum</button>
-            <button>Light Rum</button>
-            <button>Gold Rum</button>
-            <button>Dark Rum</button>
-            <button>Captain Morgan Original Spiced Rum</button>
-            <button>Pina Colada Mix</button>
-            <button>Cachaca Rum</button>
-            <button>Triple Sec</button>
-            <button>Tequila</button>
-            <button>Kentucky Bourbon</button>
-            <button>Orange Liqueur</button>
+            <button onClick={this.clickHandler}>Vodka</button>
+            <button onClick={this.clickHandler}>Apple Schnapps</button>
+            <button onClick={this.clickHandler}>Lime Juice </button>
+            <button onClick={this.clickHandler}>Gin</button>
+            <button onClick={this.clickHandler}>White Rum</button>
+            <button onClick={this.clickHandler}>Light Rum</button>
+            <button onClick={this.clickHandler}>Gold Rum</button>
+            <button onClick={this.clickHandler}>Dark Rum</button>
+            <button onClick={this.clickHandler}>
+              Captain Morgan Original Spiced Rum
+            </button>
+            <button onClick={this.clickHandler}>Pina Colada Mix</button>
+            <button onClick={this.clickHandler}>Cachaca Rum</button>
+            <button onClick={this.clickHandler}>Triple Sec</button>
+            <button onClick={this.clickHandler}>Tequila</button>
+            <button onClick={this.clickHandler}>Kentucky Bourbon</button>
+            <button onClick={this.clickHandler}>Orange Liqueur</button>
           </div>
           <div className="soft">
             <button>Cola</button>
@@ -41,7 +46,6 @@ class App extends Component {
             <button>Orgeat Syrup</button>
           </div>
         </div>
-
       </div>
     );
   }
