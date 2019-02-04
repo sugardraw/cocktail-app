@@ -19,17 +19,18 @@ cocktailController.listAll = (req, res) => {
  * search matches functions //////////
  */
 
-
-
 cocktailController.listAllMatches = (req, res) => {
   console.log(req.query.name);
   Cocktail.find({
-    "ingredients.name": { $regex: req.query.name, $options: "i" }
+    "ingredients_and_measures.name": {
+      $regex: `(\s+^${req.query.name}|^${req.query.name})`,
+
+      $options: "i"
+    }
   }).exec((errors, cocktail) => {
     if (errors) {
       console.log("error:", error);
     } else {
-      console.log(cocktail)
       res.send(cocktail);
     }
   });
