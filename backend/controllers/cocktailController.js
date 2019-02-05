@@ -24,16 +24,19 @@ cocktailController.listAllMatches = (req, res) => {
   Cocktail.find({
     "ingredients_and_measures.name": {
       $regex: `(\s+^${req.query.name}|^${req.query.name})`,
-
       $options: "i"
     }
-  }).exec((errors, cocktail) => {
-    if (errors) {
-      console.log("error:", error);
-    } else {
-      res.send(cocktail);
-    }
-  });
+  })
+    .limit(5)
+    .exec((errors, cocktail) => {
+      if (errors) {
+        console.log("error:", error);
+      } else if (req.query.name === "") {
+        res.send([]);
+      } else {
+        res.send(cocktail);
+      }
+    });
 };
 
 module.exports = cocktailController;

@@ -8,21 +8,19 @@ class CocktailSearch extends Component {
     this.state = {
       matches: []
     };
-
   }
 
-  componentDidMount() {
-    axios.get("http://localhost:3001/api/ingredients/all").then(data => {
-      console.log(data);
-      this.setState({
-        ingredients: data.data
-      });
-    });
-  }
+  //testing fetch all ingredients
+  // componentDidMount() {
+  //   axios.get("http://localhost:3001/api/ingredients/all").then(data => {
+  //     console.log(data);
+  //     this.setState({
+  //       ingredients: data.data
+  //     });
+  //   });
+  // }
 
   clickHandler = e => {
-
-    console.log(e.target.value);
     axios
       .get(
         `http://localhost:3001/api/cocktails/get-matches/?name=${
@@ -31,10 +29,6 @@ class CocktailSearch extends Component {
       )
       .then(data => {
         console.log(data.data);
-        // const reducedArray = this.state.matches.reduce(
-        //   (x, y) => (x.includes(y) ? x : [...x, y]),
-        //   []
-        // );
         this.setState({
           matches: [...data.data]
         });
@@ -48,17 +42,15 @@ class CocktailSearch extends Component {
   render() {
     return (
       <div className="container">
-        <div className="">
+        <div>
           <input
             type="text"
-            class="form-control"
-            placeholder="Write some ingredient..."
+            className="form-control cocktail-input"
+            placeholder="which ingredients do you have..."
             aria-label="ingredient"
             aria-describedby="search-by-ingredient"
-            onKeyPress={this.clickHandler}
+            onChange={this.clickHandler}
           />
-        </div>
-        <div>
           <CocktailList matches={this.state.matches} />
         </div>
       </div>

@@ -7000,4 +7000,7 @@ button:hover {
 .card {
   padding: 2rem;
   min-width: 200px;
-  background-color: #c2c2a5; }
+  background-color: white; }
+
+.cocktail-input {
+  width: 350px !important; }
