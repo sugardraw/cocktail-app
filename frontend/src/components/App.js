@@ -17,7 +17,7 @@ class App extends Component {
                 value="Search for existing Cocktails"
               />
             </Link>
-            <Link to="/cocktail-maker">
+            <Link to="/post-cocktail">
               <input
                 type="button"
                 className="btn btn-secondary m-2"

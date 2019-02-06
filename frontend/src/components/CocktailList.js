@@ -2,19 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class CocktailList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShow: true
-    };
-  }
-
-  toggleShow = () => {
-    this.setState(state => ({ isShow: !state.isShow }));
-  };
 
   render() {
-    const matched = this.props.matches;
 
     return (
       <React.Fragment>
@@ -26,14 +15,7 @@ class CocktailList extends Component {
               ))}
             </div>
 
-            <input
-              className=" btn btn-primary btn-sm"
-              type="button"
-              value="show matches details..."
-              onClick={this.toggleShow}
-            />
 
-            {this.state.isShow && <h1>'hallo test'</h1>}
           </div>
         )}
       </React.Fragment>

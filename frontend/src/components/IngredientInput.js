@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ShowMatched extends Component {
+class IngredientInput extends Component {
   render() {
     return (
       <div className="container">
@@ -10,4 +10,4 @@ class ShowMatched extends Component {
   }
 }
 
-export default ShowMatched;
+export default IngredientInput;

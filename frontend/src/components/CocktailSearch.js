@@ -10,15 +10,7 @@ class CocktailSearch extends Component {
     };
   }
 
-  //testing fetch all ingredients
-  // componentDidMount() {
-  //   axios.get("http://localhost:3001/api/ingredients/all").then(data => {
-  //     console.log(data);
-  //     this.setState({
-  //       ingredients: data.data
-  //     });
-  //   });
-  // }
+
 
   clickHandler = e => {
     axios
