@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class CocktailList extends Component {
-
   render() {
-
     return (
       <React.Fragment>
         {this.props.matches.length > 0 && (
@@ -14,8 +12,11 @@ class CocktailList extends Component {
                 <div className="text-dark m-2">{item.title}</div>
               ))}
             </div>
-
-
+            <input
+              className=" btn btn-primary btn-sm"
+              type="button"
+              value="show matches details..."
+            />
           </div>
         )}
       </React.Fragment>
