@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cors())
 
-
 // Import URI Mlab
 
 const DB = require("./config/keys");
@@ -36,6 +35,7 @@ mongoose
 //requiring routes
 
 const routes = require("./routes/api/index");
+
 //Use Routes
 app.use("/", routes);
 

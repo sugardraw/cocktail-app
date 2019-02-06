@@ -1,3 +1,5 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 body {
   height: 100vh;
   display: flex;
@@ -69,4 +71,20 @@ button:hover {
 .active {
   background: goldenrod;
   color: #2d3142;
+}
+.inactive {
+  background: rgb(32, 144, 218);
+  color: #2d3142;
+}
+.cocktails {
+  display: flex;
+  flex-direction: row;
+}
+.card {
+  padding: 2rem;
+  min-width: 200px;
+  background-color: rgb(255, 255, 255);
+}
+.cocktail-input {
+  width: 350px !important;
 }

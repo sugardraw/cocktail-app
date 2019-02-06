@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd frontend && npm start",
+    "server": "cd backend && npm start",
+    "start": "concurrently \"npm run client\" \"npm run server\" "
   },
   "repository": {
     "type": "git",
@@ -14,12 +16,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sugardraw/cocktail-app/issues"
-  },
-  "scripts": {
-    "client": "cd frontend && npm start",
-    "server": "cd backend && npm start",
-    "start": "concurrently \"npm run client\" \"npm run server\" \"npm run server\" "
-
   },
   "homepage": "https://github.com/sugardraw/cocktail-app#readme",
   "dependencies": {

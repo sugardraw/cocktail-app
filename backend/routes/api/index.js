@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const cocktailController = require("../../controllers/cocktailController");
-const recipeController = require("../../controllers/recipeController");
+const ingredientController = require("../../controllers/ingredientController");
 
 router.get("/", (req, res) => {
   res.send({
@@ -16,16 +16,17 @@ router.get("/api", (req, res) => {
   });
 });
 
-//get all restaurants
+//get all cocktails
 router.get("/api/cocktails/list", cocktailController.listAll);
+router.get("/api/ingredients/list", ingredientController.listAll);
 
-router.get("/api/recipes/list", recipeController.listAll);
 
 
 /***
- * testing query
- * 
+ *  query routes
  */
+
 router.get("/api/cocktails/get-matches", cocktailController.listAllMatches);
+router.get("/api/ingredients/all", ingredientController.listAll);
 
 module.exports = router;
