@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const cocktailSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     unique: true,
@@ -11,9 +11,14 @@ const cocktailSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  ingredients: [{ name: String }],
+  ingredients_and_measures: [{ name: String, measure: Number }],
   rating: {
-    type: Number
+    type: Number,
+    default: 10
+  },
+  description: {
+    type: String,
+    trim: true
   },
   alcoholic_drink: {
     type: Boolean,

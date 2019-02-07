@@ -7,22 +7,74 @@ class PostACocktail extends Component {
     super();
     this.state = {
       categories: [],
-      inputs: []
+      inputs: [],
+      cocktail: {}
     };
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/api/ingredients/all").then(data => {
-      this.setState({
-        categories: data.data
+    axios
+      .get("http://localhost:3001/api/ingredients/all", {
+        firstName: "Fred",
+        lastName: "Flintstone"
+      })
+      .then(data => {
+        this.setState({
+          categories: data.data
+        });
       });
-    });
   }
 
   addInput = () => {
     console.log(IngredientInput, this.state.inputs);
     let inputs = this.state.inputs.concat(IngredientInput);
-    this.setState({ inputs: inputs });
+    this.setState({ inputs });
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState(state => {
+      let cocktailData = {
+        [name]: value
+      };
+      state.cocktail = Object.assign(cocktailData, this.state.cocktail);
+      return { cocktail: state.cocktail };
+    });
+  };
+
+  /**
+   * we need to set a boolean for our checkbox
+   * since the checkboxes doesen 't have values
+   */
+
+  setCheck = e => {
+    if (e.target.checked) {
+      this.setState(state => {
+        state.cocktail.alcoholic_drink = true;
+        return { cocktail: state.cocktail };
+      });
+    } else {
+      this.setState(state => {
+        state.cocktail.alcoholic_drink = !state.cocktail.alcoholic_drink;
+        return { cocktail: state.cocktail };
+      });
+    }
+  };
+
+  handleSubmit = e => {
+    axios({
+      method: "post",
+      url: "http://localhost:3001/api/cocktails/save",
+      headers: {},
+      data: {
+        newCocktail: this.state.cocktail
+      }
+    }).then(response => {
+      console.log(response);
+    });
+
+    e.preventDefault();
+    e.target.reset();
   };
 
   render() {
@@ -41,21 +93,29 @@ class PostACocktail extends Component {
     };
 
     return (
-      <div className="postCocktail">
+      <div className="cocktail-post">
         <h2 className="py-3">Post your own Cocktail Recipe</h2>
-        <form>
+        <form
+          method="POST"
+          action="/api/cocktails/save"
+          onSubmit={this.handleSubmit}
+        >
           <div className="form-group">
-            <label htmlFor="cocktailName">Cocktail Name</label>
+            <label htmlFor="title">Cocktail Name</label>
             <input
+              onChange={this.handleChange}
+              name="title"
               type="text"
               className="form-control"
-              id="cocktailName"
+              id="title"
               placeholder="E.g. Margarita"
             />
           </div>
           <div className="form-group">
             <label htmlFor="tagline">Write a tagline for</label>
             <input
+              onChange={this.handleChange}
+              name="tagline"
               type="text"
               className="form-control"
               id="tagline"
@@ -72,28 +132,39 @@ class PostACocktail extends Component {
           />
           <div
             style={{ backgroundColor: "#326490 !important" }}
-            class="form-row p-3 rounded mb-2"
+            className="form-row p-3 rounded mb-2"
           >
-            <div class="col-4">
+            <div className="col-4">
               <label htmlFor="ingredients">Select an Ingredient</label>
-              <select className="form-control" id="ingredients">
-                {ingredientsList().map(ingredient => (
-                  <option>{ingredient}</option>
+              <select
+                onChange={this.handleChange}
+                name="ingredients"
+                className="form-control"
+                id="ingredients"
+              >
+                {ingredientsList().map((ingredient, i) => (
+                  <option key={i}>{ingredient}</option>
                 ))}
               </select>
             </div>
-            <div class="col-4">
+            <div className="col-4">
               <label htmlFor="measures">Select a Measure*</label>
-              <select class="form-control" id="measures">
+              <select
+                onChange={this.handleChange}
+                className="form-control"
+                id="measures"
+                name="measure"
+              >
                 <option>0.25</option>
                 <option>0.5</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
+                <option>5</option>
               </select>
             </div>
-            <div class="col-4">
+            <div className="col-4">
               <label htmlFor="addFields" />
               <input
                 className="form-control mt-2 bg-info text-dark"
@@ -115,19 +186,37 @@ class PostACocktail extends Component {
           />
 
           <div className="form-group">
-            <label htmlFor="exampleFormControlTextarea1">
-              Write your Recipe
-            </label>
+            <label htmlFor="description">Write your Recipe</label>
             <textarea
+              name="description"
+              onChange={this.handleChange}
               className="form-control"
-              id="exampleFormControlTextarea1"
+              id="description"
               rows="3"
               placeholder="E.g. first cut the fruits..."
             />
           </div>
+          <div className="custom-control custom-checkbox mr-sm-2">
+            <input
+              onClick={this.setCheck}
+              name="alcoholic_drink"
+              type="checkbox"
+              id="alcoholic_drink"
+              className="custom-control-input"
+            />
+            <label className="custom-control-label" htmlFor="alcoholic_drink">
+              Is it an Alcoholic Cocktail?
+            </label>
+          </div>
           <legend className="text-right">
-            <small>*: parts per liter or pieces</small>
+            <small>* : parts per liter / pieces of</small>
           </legend>
+          <input
+            name="submit"
+            type="submit"
+            className="w-50 float-right form-control mt-4 bg-info text-dark"
+            value="submit"
+          />
         </form>
       </div>
     );

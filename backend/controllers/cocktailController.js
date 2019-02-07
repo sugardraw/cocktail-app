@@ -39,4 +39,27 @@ cocktailController.listAllMatches = (req, res) => {
     });
 };
 
+/**
+ *
+ * save a cocktail
+ */
+cocktailController.save = async (req, res) => {
+  console.log('######',req.body.newCocktail);
+  req.body.newCocktail.measure=parseInt(req.body.newCocktail.measure)
+  let cocktail = new Cocktail(
+    req.body.newCocktail
+  );
+
+
+  cocktail.save(error => {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    } else {
+      console.log("Cocktail was created successfully");
+      res.send('saved');
+    }
+  });
+};
+
 module.exports = cocktailController;

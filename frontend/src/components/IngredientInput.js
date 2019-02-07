@@ -33,7 +33,7 @@ class IngredientInput extends Component {
       >
         <div class="col-4">
           <label htmlFor="ingredients">Select an Ingredient</label>
-          <select className="form-control" id="ingredients">
+          <select name="ingredients" className="form-control" id="ingredients">
             {ingredientsList().map(ingredient => (
               <option>{ingredient}</option>
             ))}

@@ -4,6 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -6926,9 +6927,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #a5bfd4;
+  background: #5a6328;
   color: white;
-  font-family: Montserrat, serif; }
+  font-family: Arial, Helvetica, sans-serif; }
 
 div .App {
   width: 800px;
@@ -6993,6 +6994,9 @@ button:hover {
   background: #2090da;
   color: #2d3142; }
 
+.jumbotron h2 {
+  font-family: 'Lobster', cursive; }
+
 .cocktails {
   display: flex;
   flex-direction: row; }
@@ -7004,3 +7008,7 @@ button:hover {
 
 .cocktail-input {
   width: 350px !important; }
+
+.cocktail-post {
+  margin-top: 8rem !important;
+  margin-bottom: 8rem !important; }
