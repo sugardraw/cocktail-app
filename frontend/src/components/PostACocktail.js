@@ -7,8 +7,7 @@ class PostACocktail extends Component {
     super();
     this.state = {
       categories: [],
-      inputs: [],
-      cocktail: {}
+      inputs: []
     };
   }
 
@@ -26,20 +25,15 @@ class PostACocktail extends Component {
   }
 
   addInput = () => {
-    console.log(IngredientInput, this.state.inputs);
     let inputs = this.state.inputs.concat(IngredientInput);
     this.setState({ inputs });
   };
 
   handleChange = e => {
-    const { name, value } = e.target;
-    this.setState(state => {
-      let cocktailData = {
-        [name]: value
-      };
-      state.cocktail = Object.assign(cocktailData, this.state.cocktail);
-      return { cocktail: state.cocktail };
-    });
+
+    console.log(e.target)
+    let { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   /**
@@ -50,13 +44,13 @@ class PostACocktail extends Component {
   setCheck = e => {
     if (e.target.checked) {
       this.setState(state => {
-        state.cocktail.alcoholic_drink = true;
-        return { cocktail: state.cocktail };
+        state.alcoholic_drink = true;
+        return state;
       });
     } else {
       this.setState(state => {
-        state.cocktail.alcoholic_drink = !state.cocktail.alcoholic_drink;
-        return { cocktail: state.cocktail };
+        state.alcoholic_drink = !state.alcoholic_drink;
+        return state;
       });
     }
   };
@@ -67,7 +61,7 @@ class PostACocktail extends Component {
       url: "http://localhost:3001/api/cocktails/save",
       headers: {},
       data: {
-        newCocktail: this.state.cocktail
+        newCocktail: this.state
       }
     }).then(response => {
       console.log(response);
@@ -77,9 +71,15 @@ class PostACocktail extends Component {
     e.target.reset();
   };
 
+  getValues =(e)=>{
+    console.log(e.target, e.currentTarget, this)
+  }
+
+
+
   render() {
     const inputs = this.state.inputs.map((Element, index) => {
-      return <Element key={index} index={index} />;
+      return <Element handleChange={this.handleChange} key={index} index={index} />;
     });
 
     let ingredientsList = () => {
@@ -148,11 +148,11 @@ class PostACocktail extends Component {
               </select>
             </div>
             <div className="col-4">
-              <label htmlFor="measures">Select a Measure*</label>
+              <label htmlFor="measure">Select a Measure*</label>
               <select
                 onChange={this.handleChange}
                 className="form-control"
-                id="measures"
+                id="measure"
                 name="measure"
               >
                 <option>0.25</option>

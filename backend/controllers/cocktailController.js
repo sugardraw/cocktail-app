@@ -44,12 +44,59 @@ cocktailController.listAllMatches = (req, res) => {
  * save a cocktail
  */
 cocktailController.save = async (req, res) => {
-  console.log('######',req.body.newCocktail);
-  req.body.newCocktail.measure=parseInt(req.body.newCocktail.measure)
-  let cocktail = new Cocktail(
-    req.body.newCocktail
-  );
+  // we delete the keys we don t need
 
+  delete req.body.newCocktail["categories"];
+  delete req.body.newCocktail["inputs"];
+
+  // define some arrays in order to create the key ingredients and measures
+  const ingredients = [];
+  const measures = [];
+  var ingredients_and_measures = [];
+
+  // we text the incoming strings with regex
+  for (let keys in req.body.newCocktail) {
+    const regexIngredients = /ingredients/i;
+
+    if (regexIngredients.test(keys)) {
+      const [...ingredientsNames] = req.body.newCocktail[keys];
+
+      ingredients.push(ingredientsNames.join(""));
+    }
+  }
+
+  for (let items in req.body.newCocktail) {
+    const regexMeasure = /measure/i;
+
+    if (regexMeasure.test(items)) {
+      const [...quantities] = req.body.newCocktail[items];
+
+      measures.push(quantities.join(""));
+    }
+  }
+
+  //converting arrays to arrays of objects
+  function strings_to_object(item) {
+    for (var i = 0; i < item.length; i++) {
+      var obj = { name: item[i] };
+      ingredients_and_measures.push(obj);
+    }
+    return ingredients_and_measures;
+  }
+  strings_to_object(ingredients);
+
+  //putting all together
+
+  for (let index in ingredients_and_measures) {
+    ingredients_and_measures[index].measure = measures[index];
+  }
+
+  // and we add the new key to the newCocktail
+  req.body.newCocktail.ingredients_and_measures = ingredients_and_measures;
+
+
+    console.log(req.body.newCocktail)
+  let cocktail = new Cocktail(req.body.newCocktail);
 
   cocktail.save(error => {
     if (error) {
@@ -57,7 +104,7 @@ cocktailController.save = async (req, res) => {
       res.send(error);
     } else {
       console.log("Cocktail was created successfully");
-      res.send('saved');
+      res.send("saved");
     }
   });
 };
