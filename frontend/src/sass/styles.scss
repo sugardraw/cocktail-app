@@ -6,7 +6,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #5a6328;
+  background:#79ad8c;
   color: white;
 
   font-family: Arial, Helvetica, sans-serif;
@@ -98,4 +98,8 @@ button:hover {
 .cocktail-post{
   margin-top: 8rem !important;
   margin-bottom: 8rem !important;
+}
+.log-field{
+  text-align: right;
+  float: right;
 }

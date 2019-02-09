@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CocktailList from "./CocktailList";
+import Navigation from "./Navigation";
 
 class CocktailSearch extends Component {
   constructor() {
@@ -9,8 +10,6 @@ class CocktailSearch extends Component {
       matches: []
     };
   }
-
-
 
   clickHandler = e => {
     axios
@@ -33,17 +32,20 @@ class CocktailSearch extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div>
-          <input
-            type="text"
-            className="form-control cocktail-input"
-            placeholder="which ingredients do you have..."
-            aria-label="ingredient"
-            aria-describedby="search-by-ingredient"
-            onChange={this.clickHandler}
-          />
-          <CocktailList matches={this.state.matches} />
+      <div>
+        <Navigation />
+        <div className="container">
+          <div>
+            <input
+              type="text"
+              className="form-control cocktail-input"
+              placeholder="which ingredients do you have..."
+              aria-label="ingredient"
+              aria-describedby="search-by-ingredient"
+              onChange={this.clickHandler}
+            />
+            <CocktailList matches={this.state.matches} />
+          </div>
         </div>
       </div>
     );
