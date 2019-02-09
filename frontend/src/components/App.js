@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
+
 
 class App extends Component {
   render() {
@@ -22,6 +22,13 @@ class App extends Component {
                 type="button"
                 className="btn btn-secondary m-2"
                 value=" Create a custom Cocktail"
+              />
+            </Link>
+            <Link to="/show-cocktails">
+              <input
+                  type="button"
+                  className="btn btn-warning m-2"
+                  value="Show Cocktails"
               />
             </Link>
           </div>

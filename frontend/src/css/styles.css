@@ -7004,3 +7004,6 @@ button:hover {
 
 .cocktail-input {
   width: 350px !important; }
+
+input {
+  margin: 2px; }
