@@ -1,16 +1,16 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 
 body {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background:#79ad8c;
+  background: #ca2742;
   color: white;
 
   font-family: Arial, Helvetica, sans-serif;
-  }
+}
 
 div .App {
   width: 800px;
@@ -79,8 +79,8 @@ button:hover {
   color: #2d3142;
 }
 
-.jumbotron h2{
-  font-family: 'Lobster', cursive;
+.jumbotron h2 {
+  font-family: "Lobster", cursive;
 }
 
 .cocktails {
@@ -95,11 +95,21 @@ button:hover {
 .cocktail-input {
   width: 350px !important;
 }
-.cocktail-post{
+.cocktail-post {
   margin-top: 8rem !important;
   margin-bottom: 8rem !important;
 }
-.log-field{
+.log-field {
   text-align: right;
   float: right;
+}
+
+input[type="file"] {
+
+  align-items: baseline;
+  color: inherit;
+  background-color: #679ab3 !important;
+  text-align: start !important;
+  border-radius: 5px;
+  display: block;
 }

@@ -10,6 +10,7 @@ class PostACocktail extends Component {
       categories: [],
       inputs: []
     };
+    this.fileInput = React.createRef();
   }
 
   componentDidMount() {
@@ -31,9 +32,9 @@ class PostACocktail extends Component {
   };
 
   handleChange = e => {
-    console.log(e.target);
+    console.log(this.fileInput.current.files[0]);
     let { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, image: this.fileInput.current.files[0] });
   };
 
   /**
@@ -56,6 +57,9 @@ class PostACocktail extends Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.fileInput.current, this.fileInput.current.files[0]);
+
     axios({
       method: "post",
       url: "http://localhost:3001/api/cocktails/save",
@@ -67,7 +71,6 @@ class PostACocktail extends Component {
       console.log(response);
     });
 
-    e.preventDefault();
     e.target.reset();
   };
 
@@ -100,11 +103,13 @@ class PostACocktail extends Component {
           <form
             method="POST"
             action="/api/cocktails/save"
+            enctype="multipart/form-data"
             onSubmit={this.handleSubmit}
           >
             <div className="form-group">
               <label htmlFor="title">Cocktail Name</label>
               <input
+                ref={this.test}
                 onChange={this.handleChange}
                 name="title"
                 type="text"
@@ -169,7 +174,7 @@ class PostACocktail extends Component {
               <div className="col-4">
                 <label htmlFor="addFields" />
                 <input
-                  className="form-control mt-2 bg-info text-dark"
+                  className="form-control mt-2 bg-info text-light"
                   type="button"
                   value="Add a new ingredient"
                   id="addFields"
@@ -206,17 +211,34 @@ class PostACocktail extends Component {
                 id="alcoholic_drink"
                 className="custom-control-input"
               />
-              <label className="custom-control-label" htmlFor="alcoholic_drink">
+              <label
+                className="custom-control-label mb-2"
+                htmlFor="alcoholic_drink"
+              >
                 Is it an Alcoholic Cocktail?
               </label>
             </div>
+            <div className="form-group">
+              <label className="image mt-3" htmlFor="image">
+                Cocktail Image
+              </label>
+              <input
+                ref={this.fileInput}
+                name="image"
+                type="file"
+                id="image"
+                className="image-input"
+                multiple
+              />
+            </div>
+
             <legend className="text-right">
               <small>* : parts per liter / pieces of</small>
             </legend>
             <input
               name="submit"
               type="submit"
-              className="w-50 float-right form-control mt-4 bg-info text-dark"
+              className="w-50 float-right form-control mt-4 bg-info text-light"
               value="submit"
             />
           </form>

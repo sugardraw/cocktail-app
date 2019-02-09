@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Cocktail = require("../models/Cocktail");
 
+
+
 const cocktailController = {};
 
 //List all cocktails in DB
@@ -44,6 +46,8 @@ cocktailController.listAllMatches = (req, res) => {
  * save a cocktail
  */
 cocktailController.save = async (req, res) => {
+  console.log('###########',req.body);
+
   // we delete the keys we don t need
 
   delete req.body.newCocktail["categories"];
@@ -94,8 +98,7 @@ cocktailController.save = async (req, res) => {
   // and we add the new key to the newCocktail
   req.body.newCocktail.ingredients_and_measures = ingredients_and_measures;
 
-
-    console.log(req.body.newCocktail)
+  console.log(req.body.newCocktail);
   let cocktail = new Cocktail(req.body.newCocktail);
 
   cocktail.save(error => {

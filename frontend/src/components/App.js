@@ -11,15 +11,15 @@ class App extends Component {
       <div>
         <Navigation />
         <div className="container">
-          <div className="jumbotron">
-            <div className="mx-auto text-center m-3">
-              <FaCocktail size={50} style={{ color: "#548aa0" }} />
+          <div className="jumbotron p-5">
+            <div className="mx-auto text-center m-3 ">
+              <FaCocktail size={50} style={{ color: "#ca2742" }} />
             </div>
             <h2   style={{
-                  color: "white",
-                  border: "1px solid #75604c",
+                  color: "#17a2b8",
+                  border: "1px solid #ca2742",
                   width: '300px'
-                }} className="text-center mx-auto text-dark p-4 rounded">Cocktail App</h2>
+                }} className="text-center mx-auto p-4 rounded">Cocktail App</h2>
 
             <div className="input-group input-group-sm mb-3">
               <Link to="/cocktail-search">
