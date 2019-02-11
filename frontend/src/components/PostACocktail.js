@@ -8,9 +8,9 @@ class PostACocktail extends Component {
     super();
     this.state = {
       categories: [],
-      inputs: []
+      inputs: [],
+      image: null
     };
-    this.fileInput = React.createRef();
   }
 
   componentDidMount() {
@@ -32,9 +32,15 @@ class PostACocktail extends Component {
   };
 
   handleChange = e => {
-    console.log(this.fileInput.current.files[0]);
     let { name, value } = e.target;
-    this.setState({ [name]: value, image: this.fileInput.current.files[0] });
+    let image = null;
+    if (name === "image") {
+      image = e.target.files[0];
+      this.setState({ [name]: value, image: image });
+    } else {
+      console.log("no images selected");
+      this.setState({ [name]: value });
+    }
   };
 
   /**
@@ -58,24 +64,25 @@ class PostACocktail extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.fileInput.current, this.fileInput.current.files[0]);
+
+    const data = new FormData();
+
+    //we put all keys our state object into a form Data
+
+    for (let i in this.state) {
+      console.log(this.state[i]);
+      data.append(`${i}`, this.state[i]);
+    }
 
     axios({
       method: "post",
       url: "http://localhost:3001/api/cocktails/save",
-      headers: {},
-      data: {
-        newCocktail: this.state
-      }
+      data
     }).then(response => {
       console.log(response);
     });
 
     e.target.reset();
-  };
-
-  getValues = e => {
-    console.log(e.target, e.currentTarget, this);
   };
 
   render() {
@@ -103,7 +110,7 @@ class PostACocktail extends Component {
           <form
             method="POST"
             action="/api/cocktails/save"
-            enctype="multipart/form-data"
+            encType="multipart/form-data"
             onSubmit={this.handleSubmit}
           >
             <div className="form-group">
@@ -223,12 +230,11 @@ class PostACocktail extends Component {
                 Cocktail Image
               </label>
               <input
-                ref={this.fileInput}
+                onChange={this.handleChange}
                 name="image"
                 type="file"
                 id="image"
                 className="image-input"
-                multiple
               />
             </div>
 

@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Cocktail = require("../models/Cocktail");
 
-
-
 const cocktailController = {};
 
 //List all cocktails in DB
@@ -46,12 +44,12 @@ cocktailController.listAllMatches = (req, res) => {
  * save a cocktail
  */
 cocktailController.save = async (req, res) => {
-  console.log('###########',req.body);
+
 
   // we delete the keys we don t need
 
-  delete req.body.newCocktail["categories"];
-  delete req.body.newCocktail["inputs"];
+  delete req.body["categories"];
+  delete req.body["inputs"];
 
   // define some arrays in order to create the key ingredients and measures
   const ingredients = [];
@@ -59,21 +57,21 @@ cocktailController.save = async (req, res) => {
   var ingredients_and_measures = [];
 
   // we text the incoming strings with regex
-  for (let keys in req.body.newCocktail) {
+  for (let keys in req.body) {
     const regexIngredients = /ingredients/i;
 
     if (regexIngredients.test(keys)) {
-      const [...ingredientsNames] = req.body.newCocktail[keys];
+      const [...ingredientsNames] = req.body[keys];
 
       ingredients.push(ingredientsNames.join(""));
     }
   }
 
-  for (let items in req.body.newCocktail) {
+  for (let items in req.body) {
     const regexMeasure = /measure/i;
 
     if (regexMeasure.test(items)) {
-      const [...quantities] = req.body.newCocktail[items];
+      const [...quantities] = req.body[items];
 
       measures.push(quantities.join(""));
     }
@@ -95,11 +93,11 @@ cocktailController.save = async (req, res) => {
     ingredients_and_measures[index].measure = measures[index];
   }
 
-  // and we add the new key to the newCocktail
-  req.body.newCocktail.ingredients_and_measures = ingredients_and_measures;
+  // and we add the new key to the
+  req.body.ingredients_and_measures = ingredients_and_measures;
 
-  console.log(req.body.newCocktail);
-  let cocktail = new Cocktail(req.body.newCocktail);
+  req.body.image=req.file
+  let cocktail = new Cocktail(req.body);
 
   cocktail.save(error => {
     if (error) {
