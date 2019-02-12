@@ -14,13 +14,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(cors());
 
+//set an static route to show the images
+
+app.use("/images", express.static(__dirname + "/uploads/images"));
+
 // Import URI Mlab
 
 const DB = require("./config/keys");
 console.log(DB.mongoURI);
 
 // URI to connect to local DB
-// 'mongodb://localhost:27017/cocktail-app-MVC'
+// 'mongodb://localhost:27017/cocktail-app-MVC-copy'
 
 mongoose
   .connect(DB.mongoURI, { useNewUrlParser: true })

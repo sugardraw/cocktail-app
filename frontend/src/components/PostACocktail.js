@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import IngredientInput from "./IngredientInput";
 import Navigation from "./Navigation";
+import { Link } from "react-router-dom";
 
 class PostACocktail extends Component {
   constructor() {
@@ -9,21 +10,16 @@ class PostACocktail extends Component {
     this.state = {
       categories: [],
       inputs: [],
-      image: null
+      msg: ""
     };
   }
 
   componentDidMount() {
-    axios
-      .get("http://localhost:3001/api/ingredients/all", {
-        firstName: "Fred",
-        lastName: "Flintstone"
-      })
-      .then(data => {
-        this.setState({
-          categories: data.data
-        });
+    axios.get("http://localhost:3001/api/ingredients/all").then(data => {
+      this.setState({
+        categories: data.data
       });
+    });
   }
 
   addInput = () => {
@@ -79,7 +75,11 @@ class PostACocktail extends Component {
       url: "http://localhost:3001/api/cocktails/save",
       data
     }).then(response => {
-      console.log(response);
+      if (response.status === 200) {
+        this.setState({
+          msg: "cocktail successfully saved"
+        });
+      }
     });
 
     e.target.reset();
@@ -107,6 +107,7 @@ class PostACocktail extends Component {
         <Navigation />
         <div className="cocktail-post">
           <h2 className="py-3">Post your own Cocktail Recipe</h2>
+
           <form
             method="POST"
             action="/api/cocktails/save"
@@ -241,6 +242,33 @@ class PostACocktail extends Component {
             <legend className="text-right">
               <small>* : parts per liter / pieces of</small>
             </legend>
+            {this.state.msg !== "" ? (
+              <div
+                style={{
+                  float: "right"
+                }}
+              >
+                <em
+                  style={{
+                    marginTop: "20px"
+                  }}
+                >
+                  {this.state.msg}
+                </em>
+                <Link to="/cocktailsList/all">
+                  <input
+                    style={{
+                      color: "white",
+                      backgroundColor: "#17a2b8",
+                      float: "right"
+                    }}
+                    type="button"
+                    className="btn m-2 "
+                    value="Show All Cocktails"
+                  />
+                </Link>
+              </div>
+            ) : null}
             <input
               name="submit"
               type="submit"

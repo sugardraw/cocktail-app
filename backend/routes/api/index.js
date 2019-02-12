@@ -16,7 +16,6 @@ const storage = multer.diskStorage({
   filename: function(req, file, callback) {
     crypto.pseudoRandomBytes(16, function(err, raw) {
       if (err) return callback(err);
-
       callback(null, raw.toString("hex") + path.extname(file.originalname));
     });
   }
@@ -42,13 +41,14 @@ router.get("/api", (req, res) => {
 
 //check all routes
 router.get("/api/cocktails/list", cocktailController.listAll);
+router.get("/uploads/images/:id", cocktailController.listAllImages);
 router.get("/api/ingredients/list", ingredientController.listAll);
 
 /***
  *  app routes
  */
 
-router.get("/api/cocktails/get-matches", cocktailController.listAllMatches);
+router.get("/api/cocktails/get-matches", cocktailController.listMatchesOnly);
 router.get("/api/ingredients/all", ingredientController.listAll);
 router.post(
   "/api/cocktails/save",

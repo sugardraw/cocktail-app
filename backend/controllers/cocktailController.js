@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Cocktail = require("../models/Cocktail");
+const fs = require("fs");
 
 const cocktailController = {};
 
@@ -19,7 +20,7 @@ cocktailController.listAll = (req, res) => {
  * search matches functions //////////
  */
 
-cocktailController.listAllMatches = (req, res) => {
+cocktailController.listMatchesOnly = (req, res) => {
   console.log(req.query.name);
   Cocktail.find({
     "ingredients_and_measures.name": {
@@ -44,8 +45,6 @@ cocktailController.listAllMatches = (req, res) => {
  * save a cocktail
  */
 cocktailController.save = async (req, res) => {
-
-
   // we delete the keys we don t need
 
   delete req.body["categories"];
@@ -96,7 +95,7 @@ cocktailController.save = async (req, res) => {
   // and we add the new key to the
   req.body.ingredients_and_measures = ingredients_and_measures;
 
-  req.body.image=req.file
+  req.body.image = req.file;
   let cocktail = new Cocktail(req.body);
 
   cocktail.save(error => {
@@ -108,6 +107,28 @@ cocktailController.save = async (req, res) => {
       res.send("saved");
     }
   });
+};
+
+cocktailController.listAllImages = (req, res) => {
+  console.log("---", req.params.id);
+  Cocktail.findOne({
+    _id: `${req.params.id}`
+  })
+    .limit(5)
+    .exec((errors, cocktail) => {
+      if (errors) {
+        console.log("error:", error);
+      } else {
+        console.log("image path");
+        fs.readFile(cocktail.image.path, "base64", (err, base64Image) => {
+          // 2. Create a data URL
+          const dataUrl = base64Image;
+          console.log(dataUrl)
+          return res.send(dataUrl);
+        });
+
+      }
+    });
 };
 
 module.exports = cocktailController;
