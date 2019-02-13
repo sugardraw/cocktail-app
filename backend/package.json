@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chokidar": "^2.1.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.16.4",

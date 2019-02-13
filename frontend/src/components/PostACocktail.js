@@ -236,6 +236,7 @@ class PostACocktail extends Component {
                 onChange={this.handleChange}
                 name="image"
                 type="file"
+                required
                 id="image"
                 className="image-input"
               />

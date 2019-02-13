@@ -25,6 +25,7 @@ const cocktailSchema = new mongoose.Schema({
     default: true
   },
   image: {
+
   },
   created_at: {
     type: Date,
