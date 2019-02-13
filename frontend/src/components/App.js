@@ -31,6 +31,13 @@ class App extends Component {
                   value="Show Cocktails"
               />
             </Link>
+            <Link to="/show-all">
+              <input
+                  type="button"
+                  className="btn btn-warning m-2"
+                  value="Show Cocktails"
+              />
+            </Link>
           </div>
         </div>
       </div>

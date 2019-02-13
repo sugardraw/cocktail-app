@@ -6,6 +6,7 @@ import DisplayCocktailCard from "./DisplayCocktailCard";
 import CocktailSearch from "./CocktailSearch";
 import ShowMatched from "./ShowMatched";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import ShowAll from "./ShowAll";
 
 class Router extends Component {
   render() {
@@ -13,6 +14,7 @@ class Router extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={App} />
+          <Route path="/show-all" component={ShowAll} />
           <Route path="/show-cocktails" component={ShowCocktails} />
           <Route path="/cocktail-card" component={DisplayCocktailCard} />
           <Route path="/cocktail-search" component={CocktailSearch} />
