@@ -7009,6 +7009,7 @@ button:hover {
 .cocktail-input {
   width: 350px !important; }
 
+<<<<<<< HEAD
 .cocktail-post {
   margin-top: 8rem !important;
   margin-bottom: 8rem !important; }
@@ -7117,3 +7118,7 @@ input[type="file"] {
     transform: translateX(-30px); }
   100% {
     transform: translateX(0px); } }
+=======
+input {
+  margin: 2px; }
+>>>>>>> 1b80803d30b212476989c11bd7b558d65a255fd2
