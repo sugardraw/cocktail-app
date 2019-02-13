@@ -95,7 +95,6 @@ button:hover {
 .cocktail-input {
   width: 350px !important;
 }
-<<<<<<< HEAD
 .cocktail-post {
   margin-top: 8rem !important;
   margin-bottom: 8rem !important;
@@ -142,7 +141,6 @@ input[type="file"] {
   animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
   animation-iteration-count: 10;
   animation-direction: alternate; /* or: normal */
-
 }
 
 .messages-loop-appear.example-appear-active {
@@ -152,7 +150,6 @@ input[type="file"] {
   animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
   animation-iteration-count: 10;
   animation-direction: alternate; /* or: normal */
-
 }
 
 .messages-loop-leave {
@@ -162,7 +159,6 @@ input[type="file"] {
   animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
   animation-iteration-count: 10;
   animation-direction: alternate; /* or: normal */
-
 }
 
 .messages-loop-leave.example-leave-active {
@@ -172,7 +168,6 @@ input[type="file"] {
   animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
   animation-iteration-count: 10;
   animation-direction: alternate; /* or: normal */
-
 }
 
 @keyframes msgAni {
@@ -209,9 +204,4 @@ input[type="file"] {
   100% {
     transform: translateX(0px);
   }
-=======
-
-input {
-  margin: 2px;
->>>>>>> 1b80803d30b212476989c11bd7b558d65a255fd2
 }

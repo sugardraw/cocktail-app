@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-class CocktailList extends Component {
+class MatchedPopUp extends Component {
   render() {
     return (
       <React.Fragment>
@@ -11,11 +12,20 @@ class CocktailList extends Component {
                 <div className="text-dark m-2">{item.title}</div>
               ))}
             </div>
+            <Link
+              to={{
+                pathname: "cocktail-card",
+                search: `?name=${this.props.ingredient}`
+              }}
+              className="btn btn-primary mb-2"
+            >
             <input
               className=" btn btn-primary btn-sm"
               type="button"
               value="show matches details..."
             />
+   
+            </Link>
           </div>
         )}
       </React.Fragment>
@@ -23,4 +33,4 @@ class CocktailList extends Component {
   }
 }
 
-export default CocktailList;
+export default MatchedPopUp;

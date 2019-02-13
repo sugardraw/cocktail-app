@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import axios from "axios";
-import CocktailList from "./CocktailList";
-import Navigation from "./Navigation";
+import { connect } from "react-redux";
+import { getCocktails } from "../redux/actions/actionCreator";
 
-class CocktailSearch extends Component {
-  constructor() {
-    super();
+import MatchedPopUp from "./MatchedPopUp";
+import Navigation from "./Navigation";
+import axios from "axios";
+
+class SearchCocktails extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
+      ingredient: "",
       matches: []
     };
   }
 
-  clickHandler = e => {
+  changeHander = e => {
     axios
       .get(
         `http://localhost:3001/api/cocktails/get-matches/?name=${
@@ -28,6 +32,14 @@ class CocktailSearch extends Component {
         console.log("matches", this.state.matches);
       })
       .catch(error => console.log(error));
+
+    
+    const ingredient = e.currentTarget.value.trim();
+    this.setState({
+      ingredient: ingredient
+    });
+    this.props.getCocktails(ingredient);
+    console.log(ingredient);
   };
 
   render() {
@@ -42,9 +54,12 @@ class CocktailSearch extends Component {
               placeholder="which ingredients do you have..."
               aria-label="ingredient"
               aria-describedby="search-by-ingredient"
-              onChange={this.clickHandler}
+              onChange={this.changeHander}
             />
-            <CocktailList matches={this.state.matches} />
+            <MatchedPopUp
+              ingredient={this.state.ingredient}
+              matches={this.state.matches}
+            />
           </div>
         </div>
       </div>
@@ -52,4 +67,7 @@ class CocktailSearch extends Component {
   }
 }
 
-export default CocktailSearch;
+export default connect(
+  null,
+  { getCocktails }
+)(SearchCocktails);
