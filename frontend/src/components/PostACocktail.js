@@ -3,6 +3,7 @@ import axios from "axios";
 import IngredientInput from "./IngredientInput";
 import Navigation from "./Navigation";
 import { Link } from "react-router-dom";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class PostACocktail extends Component {
   constructor() {
@@ -117,7 +118,7 @@ class PostACocktail extends Component {
             <div className="form-group">
               <label htmlFor="title">Cocktail Name</label>
               <input
-                ref={this.test}
+                required
                 onChange={this.handleChange}
                 name="title"
                 type="text"
@@ -203,6 +204,7 @@ class PostACocktail extends Component {
             <div className="form-group">
               <label htmlFor="description">Write your Recipe</label>
               <textarea
+                required
                 name="description"
                 onChange={this.handleChange}
                 className="form-control"
@@ -243,31 +245,38 @@ class PostACocktail extends Component {
               <small>* : parts per liter / pieces of</small>
             </legend>
             {this.state.msg !== "" ? (
-              <div
-                style={{
-                  float: "right"
-                }}
+              <ReactCSSTransitionGroup
+                transitionName="messages-loop"
+                transitionAppear={true}
+                transitionEnter={false}
+                transitionLeave={true}
               >
-                <em
+                <div
                   style={{
-                    marginTop: "20px"
+                    float: "right"
                   }}
                 >
-                  {this.state.msg}
-                </em>
-                <Link to="/cocktailsList/all">
-                  <input
+                  <em
                     style={{
-                      color: "white",
-                      backgroundColor: "#17a2b8",
-                      float: "right"
+                      marginTop: "20px"
                     }}
-                    type="button"
-                    className="btn m-2 "
-                    value="Show All Cocktails"
-                  />
-                </Link>
-              </div>
+                  >
+                    {this.state.msg}
+                  </em>
+                  <Link to="/cocktailsList/all">
+                    <input
+                      style={{
+                        color: "white",
+                        backgroundColor: "#17a2b8",
+                        float: "right"
+                      }}
+                      type="button"
+                      className="btn m-2 "
+                      value="Show All Cocktails"
+                    />
+                  </Link>
+                </div>
+              </ReactCSSTransitionGroup>
             ) : null}
             <input
               name="submit"

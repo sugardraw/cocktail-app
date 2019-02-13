@@ -98,6 +98,7 @@ cocktailController.save = async (req, res) => {
   req.body.image = req.file;
   let cocktail = new Cocktail(req.body);
 
+
   cocktail.save(error => {
     if (error) {
       console.log(error);

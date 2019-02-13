@@ -8,7 +8,7 @@ class cocktailsListAll extends Component {
     this.state = {
       allCocktails: null
     };
-    this.images = [];
+
   }
 
   componentDidMount() {
@@ -32,6 +32,7 @@ class cocktailsListAll extends Component {
             <div className="cocktails-all rounded">
               <div className="card p-4 text-center title-all">
                 <h4 style={{ color: "black" }}>{item.title}</h4>
+                {console.log(item.image)}
                 <div className="mt-2">
                   <img
                     width="250px"

@@ -133,3 +133,79 @@ input[type="file"] {
 .card-body {
   color: black !important;
 }
+
+.messages-loop-appear {
+  -webkit-animation: msgAni 1s infinite; /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite; /* Fx 5+ */
+  -o-animation: msgAni 1s infinite; /* Opera 12+ */
+  animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate; /* or: normal */
+
+}
+
+.messages-loop-appear.example-appear-active {
+  -webkit-animation: msgAni 1s infinite; /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite; /* Fx 5+ */
+  -o-animation: msgAni 1s infinite; /* Opera 12+ */
+  animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate; /* or: normal */
+
+}
+
+.messages-loop-leave {
+  -webkit-animation: msgAni 1s infinite; /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite; /* Fx 5+ */
+  -o-animation: msgAni 1s infinite; /* Opera 12+ */
+  animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate; /* or: normal */
+
+}
+
+.messages-loop-leave.example-leave-active {
+  -webkit-animation: msgAni 1s infinite; /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite; /* Fx 5+ */
+  -o-animation: msgAni 1s infinite; /* Opera 12+ */
+  animation: msgAni 1s infinite; /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate; /* or: normal */
+
+}
+
+@keyframes msgAni {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@-moz-keyframes msgAni {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes msgAni {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
