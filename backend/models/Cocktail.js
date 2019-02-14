@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const cocktailSchema = new mongoose.Schema({
+  
   title: {
     type: String,
     required: true,

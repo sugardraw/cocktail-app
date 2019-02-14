@@ -8,8 +8,7 @@ const multer = require("multer");
 const cocktailController = require("../../controllers/cocktailController");
 const ingredientController = require("../../controllers/ingredientController");
 
-
-
+const userController = require("../../controllers/userController");
 
 const storage = multer.diskStorage({
   destination: "./uploads/images/",
@@ -24,7 +23,6 @@ const storage = multer.diskStorage({
 //initializing multer
 const imageUpload = multer({ storage: storage });
 // console.log('+*******',imageUpload);
-
 
 router.get("/", (req, res) => {
   res.send({
@@ -41,19 +39,27 @@ router.get("/api", (req, res) => {
 
 //check all routes
 router.get("/api/cocktails/list", cocktailController.listAll);
+router.get("/api/ingredients/all", ingredientController.listAll);
 router.get("/uploads/images/:id", cocktailController.listAllImages);
-router.get("/api/ingredients/list", ingredientController.listAll);
+
 
 /***
  *  app routes
  */
 
 router.get("/api/cocktails/get-matches", cocktailController.listMatchesOnly);
-router.get("/api/ingredients/all", ingredientController.listAll);
+
 router.post(
   "/api/cocktails/save",
   imageUpload.single("image"),
   cocktailController.save
 );
+
+/**
+ * user routes
+ *
+ */
+
+router.post("/api/users/signup", userController.saveNewUser);
 
 module.exports = router;
