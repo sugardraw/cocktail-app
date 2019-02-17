@@ -1,15 +1,13 @@
 const mongoose = require("mongoose");
-const Recipe = require("../models/Ingredient");
+const Ingredient = require("../models/Ingredient");
+const fs = require("fs");
 
 const ingredientController = {};
 
-
-
-//List all Recipes in DB
-
+//List all cocktails in DB
 
 ingredientController.listAll = (req, res) => {
-  Recipe.find({}).exec((errors, ingredient) => {
+  Ingredient.find({}).exec((errors, ingredient) => {
     if (errors) {
       console.log("error:", error);
     } else {
@@ -17,5 +15,8 @@ ingredientController.listAll = (req, res) => {
     }
   });
 };
+
+
+
 
 module.exports = ingredientController;
