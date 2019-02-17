@@ -5,7 +5,6 @@ const fs = require("fs");
 const cocktailController = {};
 
 //List all cocktails in DB
-
 cocktailController.listAll = (req, res) => {
   Cocktail.find({}).exec((errors, cocktail) => {
     if (errors) {
@@ -16,10 +15,7 @@ cocktailController.listAll = (req, res) => {
   });
 };
 
-/**
- * search matches functions //////////
- */
-
+// search matches functions
 cocktailController.listMatchesOnly = (req, res) => {
   console.log(req.query.name);
   Cocktail.find({
@@ -40,13 +36,9 @@ cocktailController.listMatchesOnly = (req, res) => {
     });
 };
 
-/**
- *
- * save a cocktail
- */
+//save a cocktail
 cocktailController.save = async (req, res) => {
-  // we delete the keys we don t need
-
+  // we delete the keys we don't need
   delete req.body["categories"];
   delete req.body["inputs"];
 
@@ -58,20 +50,16 @@ cocktailController.save = async (req, res) => {
   // we text the incoming strings with regex
   for (let keys in req.body) {
     const regexIngredients = /ingredients/i;
-
     if (regexIngredients.test(keys)) {
       const [...ingredientsNames] = req.body[keys];
-
       ingredients.push(ingredientsNames.join(""));
     }
   }
 
   for (let items in req.body) {
     const regexMeasure = /measure/i;
-
     if (regexMeasure.test(items)) {
       const [...quantities] = req.body[items];
-
       measures.push(quantities.join(""));
     }
   }
@@ -97,7 +85,6 @@ cocktailController.save = async (req, res) => {
 
   req.body.image = req.file;
   let cocktail = new Cocktail(req.body);
-
 
   cocktail.save(error => {
     if (error) {

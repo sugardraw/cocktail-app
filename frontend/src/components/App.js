@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
-
 import { FaCocktail } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
