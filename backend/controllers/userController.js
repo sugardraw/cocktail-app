@@ -1,21 +1,39 @@
 const mongoose = require("mongoose");
 const User = require("../models/User");
-const fs = require("fs");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const userController = {};
 
-// Save new User
+userController.saveNewUser = (req, res) => {
+  if (req.body.email !== "" || req.body.email !== undefined) {
+    bcrypt
+      .genSalt(saltRounds)
+      .then(salt => {
+        console.log(`Salt: ${salt}`);
 
-userController.saveNewUser = ( req, res) => {
-    const user = new User(req.body);
-    user.save( error => {
-        if(error) {
+        return bcrypt.hash(req.body.password, salt);
+      })
+      .then(hash => {
+        console.log(`Hash: ${hash}`);
+
+        req.body.password = hash;
+        const user = new User(req.body);
+
+        user.save(error => {
+          if (error) {
             console.log(error);
             res.send(error);
-        } else {
-            res.send('user saved :)');
-        }
-    });
+          } else {
+            console.log("Cocktail was created successfully");
+            res.send("user saved :)");
+          }
+        });
+      })
+      .catch(err => console.error(err.message));
+  } else {
+    res.send("error: user data needed");
+  }
 };
 
 module.exports = userController;
