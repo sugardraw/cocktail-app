@@ -21,7 +21,7 @@ class Navigation extends Component {
               Home
             </div>
           </Link>
-          <div className="log-field">
+          {/* <div className="log-field">
             <Link to="#">
               <div
                 style={{
@@ -47,7 +47,7 @@ class Navigation extends Component {
                 sign Up
               </div>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     );

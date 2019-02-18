@@ -14,10 +14,23 @@ class ShowAll extends Component {
         return(
             <div className="container">
                 {this.props.cocktails.map( cocktail => (
-                    <div key={cocktail._id}>
-                        <h1>{cocktail.title}</h1>
-                    </div>
-                ))}
+          <div className="col-md-3 my-2">
+            <div className="cocktails-all rounded">
+              <div className="card p-4 text-center title-all">
+                <h4 style={{ color: "black" }}>{cocktail.title}</h4>
+                {console.log(cocktail.image)}
+                <div className="mt-2">
+                  <img
+                    width="250px"
+                    src={"http://localhost:3001/images/" + cocktail.image.filename}
+                    alt="img"
+                  />
+                </div>
+                <div className="card-body">{cocktail.description}</div>
+              </div>
+            </div>
+          </div>
+        ))}
             </div>
         )
     }

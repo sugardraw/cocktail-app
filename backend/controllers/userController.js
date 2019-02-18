@@ -36,7 +36,10 @@ userController.saveNewUser = (req, res) => {
                 res.send(error);
               } else {
                 console.log("Cocktail was created successfully");
-                res.send("user saved :)");
+                return res.send({
+                  success: true,
+                  msg: "Registration successful :)!"
+                });
               }
             });
           })
@@ -60,15 +63,14 @@ userController.validateUser = (req, res) => {
           req.body.password,
           registeredUsers[0].password,
           (err, response) => {
-            console.log(registeredUsers[0].password);
-
             if (err) {
-              console.log("testing condition 1");
               return err;
             } else {
               console.log(response);
-
-              return res.send("testing true");
+              return res.send({
+                isLogged: true,
+                msg: "you are successfully logged"
+              });
             }
           }
         );
