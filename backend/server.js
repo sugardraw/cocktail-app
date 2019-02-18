@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 var cors = require("cors");
+var cookieParser = require('cookie-parser')
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(cors());
+app.use(cookieParser());
 
 //set an static route to show the images
 

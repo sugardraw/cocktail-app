@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
-import { FaCocktail } from "react-icons/fa";
 
+import { FaCocktail } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import uuidV4 from "uuid/v4";
 
 class App extends Component {
+  componentDidMount() {
+    axios
+      .get("http://localhost:3001/", { withCredentials: true })
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  }
+
   render() {
     return (
       <div>
@@ -37,7 +46,7 @@ class App extends Component {
                   value="Search Cocktails"
                 />
               </Link>
-              <Link to="/post-cocktail">
+              <Link to="/sign-in">
                 <input
                   type="button"
                   style={{
