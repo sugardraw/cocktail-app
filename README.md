@@ -10,6 +10,6 @@ Cheers!
 ### Stack:
 React, MongoDB, Express, Bcrypt, Multer and Mlab
 ### Use
-	clone the Project and run
-`npm install` inside the backend and the frontend folders.
-Finally, run `npm install` and `npm start` in the main folder to run the App
+Clone the project into your local machine and run
+**`npm install`** inside the backend and the frontend folders.
+Finally, run **`npm install`** and **`npm start`** in the main folder to run the App
