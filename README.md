@@ -1,4 +1,4 @@
-# cocktail-app
+# Cocktail-App
 A REST App with React on the frontend
 
 
