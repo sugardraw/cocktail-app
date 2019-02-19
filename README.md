@@ -12,4 +12,4 @@ React, MongoDB, Express, Bcrypt, Multer and Mlab
 ### Use
 Clone the project into your local machine and run
 **`npm install`** inside the backend and the frontend folders.
-Finally, run **`npm install`** and **`npm start`** in the main folder to run the App
+Finally, run **`npm install`** and **`npm start`** in the main folder to run the App. Be aware to change the connect URI in the mongoose connect function to your own database.
