@@ -4,6 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -6922,13 +6923,21 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #a13d63;
   color: white;
-  font-family: Montserrat, serif; }
+  font-family: Arial, Helvetica, sans-serif; }
+
+/**
+fonts
+*/
+small {
+  color: #9a391b;
+  margin-top: -1rem;
+  margin-left: 16rem;
+  display: block; }
 
 div .App {
   width: 800px;
@@ -6962,6 +6971,9 @@ h1 {
   align-items: center;
   justify-content: center; }
 
+.jumbotron {
+  background-color: #00bcd4c7 !important; }
+
 .additional {
   width: 100%;
   margin-bottom: 5px;
@@ -6993,6 +7005,12 @@ button:hover {
   background: #2090da;
   color: #2d3142; }
 
+.jumbotron h2 {
+  font-family: "Lobster", cursive; }
+
+.jumbo-post {
+  margin-top: 3rem; }
+
 .cocktails {
   display: flex;
   flex-direction: row; }
@@ -7004,3 +7022,112 @@ button:hover {
 
 .cocktail-input {
   width: 350px !important; }
+
+.cocktail-post {
+  margin-top: 1rem !important;
+  margin-bottom: 8rem !important; }
+
+.log-field {
+  text-align: right;
+  float: right; }
+
+input[type="file"] {
+  align-items: baseline;
+  color: inherit;
+  background-color: #679ab3 !important;
+  text-align: start !important;
+  border-radius: 5px;
+  display: block; }
+
+.list {
+  margin: 10rem auto !important; }
+
+.cocktails-all {
+  min-width: 320px;
+  min-height: 320px;
+  display: block;
+  background-color: #e4e4e3;
+  box-shadow: 0px -2px 26px 0px #52524f; }
+
+.cocktails-all h4 {
+  font-family: "Lobster", cursive;
+  color: #548aa0 !important; }
+
+.card-body {
+  color: black !important; }
+
+.messages-loop-appear {
+  -webkit-animation: msgAni 1s infinite;
+  /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite;
+  /* Fx 5+ */
+  -o-animation: msgAni 1s infinite;
+  /* Opera 12+ */
+  animation: msgAni 1s infinite;
+  /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate;
+  /* or: normal */ }
+
+.messages-loop-appear.example-appear-active {
+  -webkit-animation: msgAni 1s infinite;
+  /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite;
+  /* Fx 5+ */
+  -o-animation: msgAni 1s infinite;
+  /* Opera 12+ */
+  animation: msgAni 1s infinite;
+  /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate;
+  /* or: normal */ }
+
+.messages-loop-leave {
+  -webkit-animation: msgAni 1s infinite;
+  /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite;
+  /* Fx 5+ */
+  -o-animation: msgAni 1s infinite;
+  /* Opera 12+ */
+  animation: msgAni 1s infinite;
+  /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate;
+  /* or: normal */ }
+
+.messages-loop-leave.example-leave-active {
+  -webkit-animation: msgAni 1s infinite;
+  /* Safari 4+ */
+  -moz-animation: msgAni 1s infinite;
+  /* Fx 5+ */
+  -o-animation: msgAni 1s infinite;
+  /* Opera 12+ */
+  animation: msgAni 1s infinite;
+  /* IE 10+, Fx 29+ */
+  animation-iteration-count: 10;
+  animation-direction: alternate;
+  /* or: normal */ }
+
+@keyframes msgAni {
+  0% {
+    transform: translateX(0px); }
+  50% {
+    transform: translateX(-30px); }
+  100% {
+    transform: translateX(0px); } }
+
+@-moz-keyframes msgAni {
+  0% {
+    transform: translateX(0px); }
+  50% {
+    transform: translateX(-30px); }
+  100% {
+    transform: translateX(0px); } }
+
+@-webkit-keyframes msgAni {
+  0% {
+    transform: translateX(0px); }
+  50% {
+    transform: translateX(-30px); }
+  100% {
+    transform: translateX(0px); } }

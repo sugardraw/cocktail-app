@@ -1,21 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class CocktailList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShow: true
-    };
-  }
-
-  toggleShow = () => {
-    this.setState(state => ({ isShow: !state.isShow }));
-  };
-
+class MatchedPopUp extends Component {
   render() {
-    const matched = this.props.matches;
-
     return (
       <React.Fragment>
         {this.props.matches.length > 0 && (
@@ -25,15 +12,20 @@ class CocktailList extends Component {
                 <div className="text-dark m-2">{item.title}</div>
               ))}
             </div>
-
+            <Link
+              to={{
+                pathname: "cocktail-card",
+                search: `?name=${this.props.ingredient}`
+              }}
+              className="btn btn-primary mb-2"
+            >
             <input
               className=" btn btn-primary btn-sm"
               type="button"
               value="show matches details..."
-              onClick={this.toggleShow}
             />
-
-            {this.state.isShow && <h1>'hallo test'</h1>}
+   
+            </Link>
           </div>
         )}
       </React.Fragment>
@@ -41,4 +33,4 @@ class CocktailList extends Component {
   }
 }
 
-export default CocktailList;
+export default MatchedPopUp;
