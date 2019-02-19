@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { getCocktails } from "../redux/actions/actionCreator";
 
 import MatchedPopUp from "./MatchedPopUp";
-import Navigation from "./Navigation";
+
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { FaCocktail } from "react-icons/fa";
 
 class SearchCocktails extends Component {
   constructor(props) {
@@ -33,7 +35,6 @@ class SearchCocktails extends Component {
       })
       .catch(error => console.log(error));
 
-    
     const ingredient = e.currentTarget.value.trim();
     this.setState({
       ingredient: ingredient
@@ -45,21 +46,38 @@ class SearchCocktails extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+
         <div className="container">
-          <div>
-            <input
-              type="text"
-              className="form-control cocktail-input"
-              placeholder="which ingredients do you have..."
-              aria-label="ingredient"
-              aria-describedby="search-by-ingredient"
-              onChange={this.changeHander}
-            />
-            <MatchedPopUp
-              ingredient={this.state.ingredient}
-              matches={this.state.matches}
-            />
+          <div className="jumbotron p-5">
+            <div>
+              <Link to="/">
+                <div className="mx-auto text-center m-3 ">
+                  <FaCocktail size={70} style={{ color: "#fdebeb" }} />
+                </div>
+              </Link>
+              <h2
+                style={{
+                  fontSize: "3rem",
+                  color: " rgb(255, 237, 77)",
+                  width: "370px"
+                }}
+                className="text-center mx-auto rounded"
+              >
+                Search for Cocktails
+              </h2>
+              <input
+                type="text"
+                className="form-control mx-auto mt-4 cocktail-input"
+                placeholder="which ingredients do you have..."
+                aria-label="ingredient"
+                aria-describedby="search-by-ingredient"
+                onChange={this.changeHander}
+              />
+              <MatchedPopUp
+                ingredient={this.state.ingredient}
+                matches={this.state.matches}
+              />
+            </div>
           </div>
         </div>
       </div>

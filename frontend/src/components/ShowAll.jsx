@@ -15,8 +15,8 @@ class ShowAll extends Component {
             <div className="container">
                 {this.props.cocktails.map( cocktail => (
           <div className="col-md-3 my-2">
-            <div className="cocktails-all rounded">
-              <div className="card p-4 text-center title-all">
+            <div className="cocktails-all rounded m-4">
+              <div className="card p-4 text-center title-all ">
                 <h4 style={{ color: "black" }}>{cocktail.title}</h4>
                 {console.log(cocktail.image)}
                 <div className="mt-2">

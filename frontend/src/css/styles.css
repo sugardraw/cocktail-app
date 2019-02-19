@@ -6927,9 +6927,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ca2742;
   color: white;
   font-family: Arial, Helvetica, sans-serif; }
+
+/**
+fonts
+*/
+small {
+  color: #9a391b;
+  margin-top: -1rem;
+  margin-left: 16rem;
+  display: block; }
 
 div .App {
   width: 800px;
@@ -6962,6 +6970,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.jumbotron {
+  background-color: #00bcd4c7 !important; }
 
 .additional {
   width: 100%;
@@ -6997,6 +7008,9 @@ button:hover {
 .jumbotron h2 {
   font-family: "Lobster", cursive; }
 
+.jumbo-post {
+  margin-top: 3rem; }
+
 .cocktails {
   display: flex;
   flex-direction: row; }
@@ -7010,7 +7024,7 @@ button:hover {
   width: 350px !important; }
 
 .cocktail-post {
-  margin-top: 8rem !important;
+  margin-top: 1rem !important;
   margin-bottom: 8rem !important; }
 
 .log-field {

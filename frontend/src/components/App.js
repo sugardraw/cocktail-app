@@ -17,16 +17,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        {/* <Navigation /> */}
         <div className="container">
           <div className="jumbotron p-5">
             <div className="mx-auto text-center m-3 ">
-              <FaCocktail size={50} style={{ color: "#ca2742" }} />
+              <FaCocktail size={70} style={{ color: "#fdebeb" }} />
             </div>
             <h2
               style={{
-                color: "#17a2b8",
-                border: "1px solid #ca2742",
+                fontSize: "3rem",
+                color: " rgb(255, 237, 77)",
                 width: "300px"
               }}
               className="text-center mx-auto p-4 rounded"
@@ -34,31 +34,34 @@ class App extends Component {
               Cocktail App
             </h2>
 
-            <div className="input-group input-group-sm mb-3">
-              <Link to="/cocktail-search">
+            <div className="input-group input-group mb-3">
+              <Link className="btn btn-lg btn-block" to="/cocktail-search">
                 <input
                   style={{
-                    color: "white",
-                    backgroundColor: "#17a2b8"
+                    padding: "15px 0",
+                    backgroundColor: "#ffaddb",
+                    fontFamily: " monospace"
                   }}
                   type="button"
-                  className="btn m-2 "
+                  className="btn btn-lg btn-block"
                   value="Search Cocktails"
                 />
               </Link>
-              <Link to="/sign-in">
+              <Link className="btn  btn-lg btn-block" to="/sign-in">
                 <input
-                  type="button"
                   style={{
-                    color: "white",
-                    backgroundColor: "#17a2b8"
+                    fontFamily: " monospace",
+
+                    padding: "15px 0",
+                    backgroundColor: "#ffaddb"
                   }}
-                  className="btn m-2"
-                  value=" Create Cocktail"
+                  className="btn btn-lg btn-block"
+                  type="button"
+                  value="Create Cocktail *"
                 />
               </Link>
             </div>
-            <div className="input-group input-group-sm mb-3 ">
+            {/* <div className="input-group input-group-sm mb-3 ">
               <Link className="mx-auto" to="/show-all">
                 <input
                   style={{
@@ -70,9 +73,12 @@ class App extends Component {
                   value="Show all existing Cocktails"
                 />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
+        <small>
+          <em>* Only registered users can create Cocktails</em>
+        </small>
       </div>
     );
   }

@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
+import Modal from "react-awesome-modal";
+import { FaCocktail } from "react-icons/fa";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       status: false,
-      success: false
+      success: false,
+      visible: false
     };
   }
   handleInput = e => {
@@ -37,7 +40,8 @@ class SignUp extends Component {
         }
         if (res.data.success) {
           this.setState({
-            success: true
+            success: true,
+            visible: true
           });
         }
       })
@@ -49,92 +53,133 @@ class SignUp extends Component {
         <Navigation />
 
         <div className="container">
-          <form
-            style={{ minWidth: "300px" }}
-            onSubmit={this.submit}
-            action="http://localhost:3001/api/users/signup"
-            method="post"
-          >
-            <div className="form-group">
-              <label htmlFor="userInput">Name</label>
-              <input
-                name="name"
-                type="text"
-                className="form-control"
-                id="userInput"
-                aria-describedby="userInput"
-                placeholder="Enter name"
-                onChange={this.handleInput}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
-              <input
-                name="email"
-                type="email"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                onChange={this.handleInput}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
-              <input
-                name="password"
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                onChange={this.handleInput}
-              />
-            </div>
-            <input
-              name="submit"
-              type="submit"
-              className="form-control bg-info text-light"
-              value="Submit"
-              onClick={this.submit}
-            />
-            {this.state.status && (
-              <div>
-                <div className="text-warning">
-                  <em>
-                    A user with this email is already registered. Sign in to
-                    create your cocktail
-                  </em>
+          <div className="jumbotron p-5">
+            <form
+              style={{ minWidth: "300px" }}
+              onSubmit={this.submit}
+              action="http://localhost:3001/api/users/signup"
+              method="post"
+            >
+            <Link to="/">
+                <div className="mx-auto text-center m-3 ">
+                  <FaCocktail size={70} style={{ color: "#fdebeb" }} />
                 </div>
-                <Link to="/sign-in">
-                  <input
-                    type="button"
-                    className="form-control bg-info text-light mt-3"
-                    value="go to sign in"
-                  />
-                </Link>
+              </Link>
+              <h2
+                style={{
+                  fontSize: "3rem",
+                  color: " rgb(255, 237, 77)",
+                  width: "300px"
+                }}
+                className="text-center mx-auto p-4 rounded"
+              >
+                Sign Up
+              </h2>
+              <div className="form-group">
+                <label htmlFor="userInput">Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  className="form-control"
+                  id="userInput"
+                  aria-describedby="userInput"
+                  placeholder="Enter name"
+                  onChange={this.handleInput}
+                />
               </div>
-            )}
-            {this.state.success && (
-              <div>
-                <div className="text-light mt-3">
-                  <b>Congratulations, your Registration was successful.</b>
-                  <div className="row">
-                    <Link to="/post-cocktail">
-                      <input
-                        style={{
-                          color: "white",
-                          backgroundColor: "#17a2b8"
-                        }}
-                        type="button"
-                        className="btn m-2 "
-                        value="create cocktail"
-                      />
-                    </Link>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <input
+                  name="email"
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  onChange={this.handleInput}
+                />
+              </div>
+              {this.state.status && (
+                <div>
+                  <div className="text-light">
+                    <strong>
+                      A user with this email is already registered. Sign in to
+                      create your cocktail
+                    </strong>
                   </div>
                 </div>
+              )}
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  onChange={this.handleInput}
+                />
               </div>
-            )}
-          </form>
+              <input
+                style={{
+                  fontFamily: " monospace",
+
+                  padding: "15px 0",
+                  backgroundColor: "rgb(239, 136, 138)"
+                }}
+                className="btn btn-lg btn-block"
+                name="submit"
+                type="submit"
+                value="Submit"
+                onClick={this.submit}
+              />
+
+              {this.state.status && (
+                <Link to="/sign-in">
+                  <input
+                    style={{
+                      fontFamily: " monospace",
+
+                      padding: "15px 0",
+                      backgroundColor: "rgb(239, 136, 138)"
+                    }}
+                    className="btn btn-lg btn-block mt-3"
+                    name="submit"
+                    type="button"
+                    value="Sign In"
+                  />
+                </Link>
+              )}
+
+              <Modal
+                visible={this.state.visible}
+                effect="fadeInUp"
+                width="400"
+                height="200"
+              >
+                {this.state.success && (
+                  <div>
+                    <div className="text-dark mt-3">
+                      <h4 className="p-4">
+                        Congratulations, your Registration was successful.
+                      </h4>
+                      <Link to="/post-cocktail">
+                        <input
+                          style={{
+                            color: "white",
+                            backgroundColor: "#17a2b8"
+                          }}
+                          type="button"
+                          className="btn text-center position-relative d-block mx-auto "
+                          value="create cocktail"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </Modal>
+            </form>
+          </div>
         </div>
       </div>
     );
