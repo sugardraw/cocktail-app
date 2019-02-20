@@ -4,14 +4,13 @@ import Navigation from "./Navigation";
 import { FaCocktail } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import uuidV4 from "uuid/v4";
 
 class App extends Component {
   componentDidMount() {
-    axios
-      .get("http://localhost:3001/", { withCredentials: true })
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+    //setting a cookie
+    this.props.cookies.set("token", "cocktail-app-" + Date.now(), {
+      path: "/"
+    });
   }
 
   render() {
@@ -51,7 +50,6 @@ class App extends Component {
                 <input
                   style={{
                     fontFamily: " monospace",
-
                     padding: "15px 0",
                     backgroundColor: "#ffaddb"
                   }}
@@ -61,19 +59,6 @@ class App extends Component {
                 />
               </Link>
             </div>
-            {/* <div className="input-group input-group-sm mb-3 ">
-              <Link className="mx-auto" to="/show-all">
-                <input
-                  style={{
-                    color: "white",
-                    backgroundColor: "#17a2b8"
-                  }}
-                  type="button"
-                  className="btn m-2"
-                  value="Show all existing Cocktails"
-                />
-              </Link>
-            </div> */}
           </div>
         </div>
         <small>

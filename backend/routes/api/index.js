@@ -5,7 +5,9 @@ const multer = require("multer");
 const cocktailController = require("../../controllers/cocktailController");
 const ingredientController = require("../../controllers/ingredientController");
 const userController = require("../../controllers/userController");
+
 const uuidV4 = require("uuid/v4");
+const cors = require("cors");
 
 const storage = multer.diskStorage({
   destination: "./uploads/images/",
@@ -22,7 +24,7 @@ const imageUpload = multer({ storage: storage });
 // console.log('+*******',imageUpload);
 
 router.get("/", (req, res) => {
-  res.cookie("sessionId", uuidV4());
+
   res.send({
     init: "start"
   });
@@ -54,6 +56,12 @@ router.post(
 
 // User Route
 router.post("/api/users/signup", userController.saveNewUser);
+
+//
+
 router.post("/api/users/signin", userController.validateUser);
+
+// check tokens
+router.post("/api/users/check-token", userController.checkToken);
 
 module.exports = router;

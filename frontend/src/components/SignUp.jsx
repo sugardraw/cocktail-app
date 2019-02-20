@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Navigation from "./Navigation";
+
 import Modal from "react-awesome-modal";
 import { FaCocktail } from "react-icons/fa";
 
@@ -50,7 +50,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+   
 
         <div className="container">
           <div className="jumbotron p-5">

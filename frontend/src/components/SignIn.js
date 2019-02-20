@@ -8,15 +8,32 @@ import { FaCocktail } from "react-icons/fa";
 class SingIn extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       isRegistered: false,
       isLogged: false,
       error: "",
       msg: "",
-      visible: false
+      visible: false,
+      token: this.props.cookies.get("token"),
+      render: true
     };
   }
+
+  componentDidMount() {
+    axios
+      .post("http://localhost:3001/api/users/check-token", {
+        token: this.state.token
+      })
+      .then(res => {
+        console.log(res.data);
+        if (res.data.length > 0) {
+          this.setState({ render: false });
+        } else {
+          return null;
+        }
+      });
+  }
+
   handleInput = e => {
     this.setState({
       isRegistered: false,
@@ -35,7 +52,12 @@ class SingIn extends Component {
 
     if (this.state.email !== undefined || this.state.password !== undefined) {
       axios
-        .post("http://localhost:3001/api/users/signin", this.state)
+        .post("http://localhost:3001/api/users/signin", {
+          params: {
+            token: this.state.token
+          },
+          data: this.state
+        })
         .then(res => {
           console.log(res);
           if (res.data.isRegistered === false) {
@@ -57,8 +79,8 @@ class SingIn extends Component {
     }
   };
   render() {
-    return (
-      <div>
+    if (this.state.render) {
+      return (
         <div className="container">
           <div className="jumbotron p-5">
             <form
@@ -179,8 +201,16 @@ class SingIn extends Component {
             </form>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="container">
+          <div className="card">
+            <h4 className="text-danger">You already logged in</h4>
+          </div>
+        </div>
+      );
+    }
   }
 }
 

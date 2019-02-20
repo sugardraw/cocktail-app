@@ -11,19 +11,30 @@ import cocktailsListAll from "./CocktailsListAll";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import ShowAll from "./ShowAll";
+import { withCookies } from "react-cookie";
 
 class Router extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={App} />
+          <Route
+            exact
+            path="/"
+            render={() => <App cookies={this.props.cookies} />}
+          />
           <Route path="/sign-up" component={SignUp} />
-          <Route path="/sign-in" component={SignIn} />
+          <Route
+            path="/sign-in"
+            render={() => <SignIn cookies={this.props.cookies} />}
+          />
           <Route path="/show-all" component={ShowAll} />
           <Route path="/cocktail-card" component={DisplayCocktailCard} />
           <Route path="/cocktail-search" component={SearchCocktails} />
-          <Route path="/post-cocktail" component={PostACocktail} />
+          <Route
+            path="/post-cocktail"
+            render={() => <PostACocktail cookies={this.props.cookies} />}
+          />
           <Route path="/cocktailsList/all" component={cocktailsListAll} />
         </Switch>
       </BrowserRouter>
@@ -31,4 +42,4 @@ class Router extends Component {
   }
 }
 
-export default Router;
+export default withCookies(Router);
