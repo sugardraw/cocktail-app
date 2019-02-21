@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Navigation from "./Navigation";
+import { Link } from "react-router-dom";
+
 
 class cocktailsListAll extends Component {
   constructor() {
@@ -50,10 +51,22 @@ class cocktailsListAll extends Component {
 
     return (
       <div>
-        <Navigation />
+ 
         <div className="container-fluid">
           <div className="list">
             <div className="row mx-2">{list()}</div>
+          <Link className="btn  btn-lg btn-block" to="/post-cocktail">
+                <input
+                  style={{
+                    fontFamily: " monospace",
+                    padding: "15px 0",
+                    backgroundColor: "#ffaddb"
+                  }}
+                  className="btn btn-lg btn-block"
+                  type="button"
+                  value="Create another Cocktail?"
+                />
+              </Link>
           </div>
         </div>
       </div>

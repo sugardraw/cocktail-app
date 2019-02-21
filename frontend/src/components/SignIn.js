@@ -206,7 +206,19 @@ class SingIn extends Component {
       return (
         <div className="container">
           <div className="card">
-            <h4 className="text-danger">You already logged in</h4>
+            <h4 className="text-danger">You are already logged in</h4>
+            <Link className="btn  btn-lg btn-block" to="/post-cocktail">
+                <input
+                  style={{
+                    fontFamily: " monospace",
+                    padding: "15px 0",
+                    backgroundColor: "#ffaddb"
+                  }}
+                  className="btn btn-lg btn-block"
+                  type="button"
+                  value="Create Cocktail?"
+                />
+              </Link>
           </div>
         </div>
       );
