@@ -6,10 +6,15 @@ class MatchedPopUp extends Component {
     return (
       <React.Fragment>
         {this.props.matches.length > 0 && (
-          <div className="p-1 m-1 card bg-light">
-            <div className="card title">
+          <div className="card mb-3">
+            <div className="card-body">
               {this.props.matches.map(item => (
-                <div className="text-dark m-2">{item.title}</div>
+                <div key={item._id} className="text-dark m-2">
+                  <img className="card-img-top" src={item.image} alt="Card image cap"/>
+                  <p>{item.title}</p>
+                  <div className="card-text">{item.title}</div>
+                  <div className="card-text">{item.description}</div>
+                </div>
               ))}
             </div>
             <Link
@@ -22,7 +27,7 @@ class MatchedPopUp extends Component {
             <input
               className=" btn btn-primary btn-sm"
               type="button"
-              value="show matches details..."
+              value="show matches for ..."
             />
    
             </Link>

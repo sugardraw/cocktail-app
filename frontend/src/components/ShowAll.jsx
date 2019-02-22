@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAll } from '../redux/actions/actionCreator';
+// import { getAll } from '../redux/actions/actionCreator';
 
 
 class ShowAll extends Component {
@@ -40,4 +40,4 @@ const mapStateToProps = (state) => ({
     cocktails: state.cocktailsReducer.cocktails
 });
 
-export default connect( mapStateToProps, { getAll })(ShowAll)
+export default connect( mapStateToProps, null)(ShowAll)

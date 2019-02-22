@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-var cors = require("cors");
-var cookieParser = require('cookie-parser')
+const cors = require("cors");
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = process.env.PORT || 3001;

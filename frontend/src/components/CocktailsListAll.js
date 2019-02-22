@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 
 class cocktailsListAll extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       allCocktails: null
     };
@@ -28,7 +28,7 @@ class cocktailsListAll extends Component {
   render() {
     const list = () => {
       if (this.state.allCocktails !== null) {
-        return this.state.allCocktails.map((item, i) => (
+        return this.state.allCocktails.map((item) => (
           <div className="col-md-3 my-2">
             <div className="cocktails-all rounded">
               <div className="card p-4 text-center title-all">

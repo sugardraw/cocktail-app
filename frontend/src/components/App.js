@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-
 import { FaCocktail } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import uuid from "uuid";
 
 class App extends Component {
   componentDidMount() {
     //setting a cookie
-    this.props.cookies.set("token", "cocktail-app-" + Date.now(), {
+    this.props.cookies.set("token", "cocktail-app-" + uuid(), {
       path: "/"
     });
   }
@@ -16,7 +14,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Navigation /> */}
         <div className="container">
           <div className="jumbotron p-5">
             <div className="mx-auto text-center m-3 ">
