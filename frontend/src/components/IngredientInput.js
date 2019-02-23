@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 class IngredientInput extends Component {
   constructor() {
     super();
@@ -10,7 +11,9 @@ class IngredientInput extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/api/ingredients/all").then(data => {
+    axios
+        .get("http://localhost:3001/api/ingredients/all")
+        .then(data => {
       this.setState({
         categories: data.data
       });

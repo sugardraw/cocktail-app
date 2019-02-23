@@ -10,26 +10,23 @@ class MatchedPopUp extends Component {
             <div className="card-body">
               {this.props.matches.map(item => (
                 <div key={item._id} className="text-dark m-2">
-                  <img className="card-img-top" src={item.image} alt="Card image cap"/>
-                  <p>{item.title}</p>
-                  <div className="card-text">{item.title}</div>
-                  <div className="card-text">{item.description}</div>
+                  <div className="bg-warning text-center rounded">
+                  <h5 className="card-title">{item.title}</h5>
+                  <img className="card-img-top rounded-bottom"
+                       width="150px"
+                       src={"http://localhost:3001/images/" + item.image.filename}
+                       alt="Card image cap"/>
+                </div>
                 </div>
               ))}
             </div>
-            <Link
-              to={{
-                pathname: "cocktail-card",
-                search: `?name=${this.props.ingredient}`
-              }}
-              className="btn btn-primary mb-2"
-            >
-            <input
-              className=" btn btn-primary btn-sm"
-              type="button"
-              value="show matches for ..."
-            />
-   
+            <Link to={{
+              pathname: "cocktail-card",
+              search: `?name=${this.props.ingredient}` }}
+                  className="btn btn-primary mb-2">
+              <input className=" btn btn-primary btn-sm"
+                     type="button"
+                     value="show matches for ..."/>
             </Link>
           </div>
         )}

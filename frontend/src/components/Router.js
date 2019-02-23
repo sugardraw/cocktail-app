@@ -1,17 +1,15 @@
 import React, { Component } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { withCookies } from "react-cookie";
 
 import App from "./App";
-
 import DisplayCocktailCard from "./DisplayCocktailCard";
 import SearchCocktails from "./SearchCocktails";
-
 import PostACocktail from "./PostACocktail";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import cocktailsListAll from "./CocktailsListAll";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import ShowAll from "./ShowAll";
-import { withCookies } from "react-cookie";
 
 class Router extends Component {
   render() {

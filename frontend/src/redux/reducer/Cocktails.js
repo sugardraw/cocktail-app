@@ -3,7 +3,8 @@ import  { LOAD_MATCHES, LOAD_COCKTAIL, LOAD_ALL } from '../actions/actionTypes';
 
 const initialState = {
     cocktails: [],
-    matches: []
+    matches: [],
+    ingredient: []
 };
 
 export default function( state= initialState, action ) {
@@ -11,15 +12,16 @@ export default function( state= initialState, action ) {
 
     switch (action.type) {
         case LOAD_MATCHES: {
-            console.log('Case: Load-matches', action.type, action.payload);
+            console.log('Case: Load-matches', action.type, action.payload, action.ingredient);
             return {
                 ...state,
                 matches: action.payload,
+                ingredient: action.ingredient
             };
         }
         case LOAD_COCKTAIL: {
             console.log('Reducer case', action.type);
-            console.log('Case: Load-matches', action.payload, action.matches)
+            console.log('Case: Load-matches', action.payload, action.matches, )
             return{
                 ...state,
                 cocktails: action.payload

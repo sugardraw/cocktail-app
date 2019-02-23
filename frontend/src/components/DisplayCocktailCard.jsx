@@ -4,29 +4,32 @@ import Navigation from "./Navigation";
 
 class DisplayCocktailCard extends Component {
   render() {
-    console.log("Display", this.props);
     return (
-      <div>
-        <Navigation />
-
-        <div classNme="container">
-          {this.props.cocktails.map(cocktail => (
-            <div key={cocktail._id} className="col-md-3 my-2">
-              <div className="cocktails-all rounded">
-                <div className="card p-4 text-center title-all">
-                  <h4 style={{ color: "black" }}>{cocktail.title}</h4>
-                  {console.log(cocktail.image)}
+      <div className="jumbotron p-5">
+          <Link to="cocktail-search">
+              <div className="mx-auto text-center m-3 ">
+                  <FaCocktail size={70} style={{ color: "#fdebeb" }} />
+              </div>
+          </Link>
+        <div className="container">
+          {this.props.matches.map(cocktail => (
+            <div key={cocktail._id}>
+              <div className="cocktails-all rounded m-1 ">
+                <div className="card p-4 text-center title-all"
+                     style={{ backgroundColor: "#f8dc8b"}}>
+              <h4 style={{ color: "black" }}>
+                  {cocktail.title}
+              </h4>
                   <div className="mt-2">
-                    <img
-                      width="250px"
-                      src={
-                        "http://localhost:3001/images/" +
-                        cocktail.image.filename
-                      }
-                      alt="img"
-                    />
+                    <img width="250px"
+                         src={
+                             "http://localhost:3001/images/" +
+                             cocktail.image.filename }
+                         alt="img" />
                   </div>
-                  <div className="card-body">{cocktail.description}</div>
+                  <div className="card-body">
+                      {cocktail.description}
+                  </div>
                 </div>
               </div>
             </div>
@@ -38,7 +41,7 @@ class DisplayCocktailCard extends Component {
 }
 
 const mapStateToProps = state => ({
-  cocktails: state.cocktailsReducer.cocktails
+    matches: state.cocktailsReducer.matches,
 });
 
 export default connect(

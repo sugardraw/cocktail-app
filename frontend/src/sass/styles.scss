@@ -152,6 +152,12 @@ input[type="file"] {
   color: black !important;
 }
 
+.card-img-top {
+  height: 15vh;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 .messages-loop-appear {
   -webkit-animation: msgAni 1s infinite; /* Safari 4+ */
   -moz-animation: msgAni 1s infinite; /* Fx 5+ */
