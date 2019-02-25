@@ -31,7 +31,7 @@ app.use("/images", express.static(__dirname + "/uploads/images"));
 // 'mongodb://localhost:27017/cocktail-app-MVC-copy'
 
 mongoose
-  .connect({host: process.env.DB_HOST}, { useNewUrlParser: true })
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
   .then(console.log("Successful connection to database"))
   .catch(error => {
     console.log(`The following error occurred: ${error.message}`);
