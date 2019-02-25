@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 var cors = require("cors");
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
+
+require('dotenv').config()
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -22,14 +24,14 @@ app.use("/images", express.static(__dirname + "/uploads/images"));
 
 // Import URI Mlab
 
-const DB = require("./config/keys");
-console.log(DB.mongoURI);
+// const DB = require("./config/keys");
+// console.log(DB.mongoURI);
 
 // URI to connect to local DB
 // 'mongodb://localhost:27017/cocktail-app-MVC-copy'
 
 mongoose
-  .connect(DB.mongoURI, { useNewUrlParser: true })
+  .connect({host: process.env.DB_HOST}, { useNewUrlParser: true })
   .then(console.log("Successful connection to database"))
   .catch(error => {
     console.log(`The following error occurred: ${error.message}`);
