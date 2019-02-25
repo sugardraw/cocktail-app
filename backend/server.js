@@ -29,7 +29,7 @@ console.log(DB.mongoURI);
 // 'mongodb://localhost:27017/cocktail-app-MVC-copy'
 
 mongoose
-  .connect(DB.mongoURI, { useNewUrlParser: true })
+  .connect('mongodb://localhost:27017/cocktail-app-MVC-copy', { useNewUrlParser: true })
   .then(console.log("Successful connection to database"))
   .catch(error => {
     console.log(`The following error occurred: ${error.message}`);
