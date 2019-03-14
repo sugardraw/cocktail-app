@@ -8,7 +8,8 @@ Lets say, you have some drinks at home and you are wondering, if it will be poss
 Cheers!
 
 ### Stack:
-React, MongoDB, Express, Bcrypt, Multer and Mlab
+Redux, React, MongoDB, Express, Bcrypt, Multer and Mlab
+
 ### Use
 Clone the project into your local machine and run
 **`npm install`** inside the backend and the frontend folders.
